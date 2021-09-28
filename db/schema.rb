@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_113855) do
+ActiveRecord::Schema.define(version: 2021_09_28_120501) do
 
   create_table "channels", force: :cascade do |t|
     t.string "icon"
     t.string "name"
     t.string "telerama_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string "title"
+    t.string "sub_title"
+    t.string "category"
+    t.datetime "start_time"
+    t.datetime "stop_time"
+    t.string "description"
+    t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

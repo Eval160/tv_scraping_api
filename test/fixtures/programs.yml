@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  sub_title: MyString
+  category: MyString
+  start_time: MyString
+  stop_time: MyString
+  description: MyString
+  duration: MyString
+
+two:
+  title: MyString
+  sub_title: MyString
+  category: MyString
+  start_time: MyString
+  stop_time: MyString
+  description: MyString
+  duration: MyString
