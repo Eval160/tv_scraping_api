@@ -28,8 +28,11 @@ ActiveRecord::Schema.define(version: 2021_09_28_120501) do
     t.datetime "stop_time"
     t.string "description"
     t.integer "duration"
+    t.integer "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_programs_on_channel_id"
   end
 
+  add_foreign_key "programs", "channels"
 end
