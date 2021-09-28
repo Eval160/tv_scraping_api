@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_09_28_120501) do
-
   create_table "channels", force: :cascade do |t|
     t.string "icon"
     t.string "name"

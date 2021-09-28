@@ -1,8 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-puts "Create channel"
+require 'open-uri'
+require 'nokogiri'
+
+puts 'Clean DB'
+Program.destroy_all
+Channel.destroy_all
+
+puts 'Create programs'
+ScrappingProgramsJob.perform_now
+
+puts 'Create channels'
+
+url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
+# url = 'https://xmltv.ch/xmltv/xmltv-tnt.xml'
+xml = Nokogiri::XML(URI.open(url))
+channels = Hash.from_xml(xml.to_s)['tv']['channel']
+channels.each do |chan|
+  Channel.create!(telerama_id: chan['id'], name: chan['display_name'], icon: chan['icon']['src'])
+end
+
+puts "Channels created"
