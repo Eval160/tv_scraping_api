@@ -7,8 +7,8 @@ Channel.destroy_all
 
 puts 'Create channels'
 
-url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
-# url = 'https://xmltv.ch/xmltv/xmltv-tnt.xml'
+# url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
+url = 'https://xmltv.ch/xmltv/xmltv-tnt.xml'
 xml = Nokogiri::XML(URI.open(url))
 channels = Hash.from_xml(xml.to_s)['tv']['channel']
 puts "Channels array:"
