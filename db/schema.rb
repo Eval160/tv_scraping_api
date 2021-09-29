@@ -11,6 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_09_28_120501) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "channels", force: :cascade do |t|
     t.string "icon"
     t.string "name"
@@ -27,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_120501) do
     t.datetime "stop_time"
     t.string "description"
     t.integer "duration"
-    t.integer "channel_id", null: false
+    t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["channel_id"], name: "index_programs_on_channel_id"
