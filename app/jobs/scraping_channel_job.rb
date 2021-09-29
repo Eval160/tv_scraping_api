@@ -6,7 +6,8 @@ class ScrapingChannelJob < ApplicationJob
 
   def perform(*args)
     url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
-    xml = Nokogiri::XML(URI.open(url))
+    # xml = Nokogiri::XML(URI.open(url))
+    xml = Nokogiri::XML(File.open('storage/xmltv.xml'))
     channels = Hash.from_xml(xml.to_s)['tv']['channel']
     channels.each do |chan|
       Channel.create!(telerama_id: chan['id'], name: chan['display_name'], icon: chan['icon']['src'])
