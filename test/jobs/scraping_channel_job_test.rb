@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ScrapingProgramsJobTest < ActiveJob::TestCase
+class ScrapingChannelJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

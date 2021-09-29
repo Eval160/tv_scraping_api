@@ -7,23 +7,12 @@ Channel.destroy_all
 
 puts 'Create channels'
 
-url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
-# url = "http://xmltv.bigsb.fr/xmltv.xml"
-# url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
-# url = 'https://xmltv.ch/xmltv/xmltv-tnt.xml'
-xml = Nokogiri::XML(URI.open(url))
-channels = Hash.from_xml(xml.to_s)['tv']['channel']
-puts "Channels array:"
-puts channels
+ScrapingChannelJob.perform_later
 
-channels.each do |chan|
-  puts "******"
-  puts chan
-  Channel.create!(telerama_id: chan['id'], name: chan['display_name'], icon: chan['icon']['src'])
-end
-puts "Channels created"
+puts 'Channels created'
 
 puts 'Create programs'
-ScrappingProgramsJob.perform_later
 
-puts "Programs created"
+ScrapingProgramsJob.perform_later
+
+puts 'Programs created'

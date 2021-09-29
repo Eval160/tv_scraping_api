@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 every 2.days do
-  runner "ScrappingProgramsJob.perform_later"
+  runner "ScrapingProgramsJob.perform_later"
   runner "CleanProgramsJob.perform_later"
 end

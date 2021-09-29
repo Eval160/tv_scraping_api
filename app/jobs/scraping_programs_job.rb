@@ -1,11 +1,10 @@
-class ScrappingProgramsJob < ApplicationJob
+class ScrapingProgramsJob < ApplicationJob
   require 'open-uri'
   require 'nokogiri'
 
   queue_as :default
 
   def perform(*args)
-    # Do something later
     url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
     # url = "http://xmltv.bigsb.fr/xmltv.xml"
     # url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
