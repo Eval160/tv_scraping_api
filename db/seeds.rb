@@ -7,7 +7,9 @@ Channel.destroy_all
 
 puts 'Create channels'
 
-url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
+url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
+# url = "http://xmltv.bigsb.fr/xmltv.xml"
+# url = 'https://xmltv.ch/xmltv/xmltv-complet.xml'
 # url = 'https://xmltv.ch/xmltv/xmltv-tnt.xml'
 xml = Nokogiri::XML(URI.open(url))
 channels = Hash.from_xml(xml.to_s)['tv']['channel']
