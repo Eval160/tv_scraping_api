@@ -5,9 +5,10 @@ class ScrapingProgramsJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
-    # xml = Nokogiri::XML(URI.open(url))
-    xml = Nokogiri::XML(File.open('storage/xmltv.xml'))
+    # url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
+    url = 'https://xmltv.ch/xmltv/xmltv-complet_1jour.xml'
+    xml = Nokogiri::XML(URI.open(url))
+    # xml = Nokogiri::XML(File.open('storage/xmltv.xml'))
 
     programs = Hash.from_xml(xml.to_s)['tv']['programme']
     puts programs
