@@ -3,7 +3,7 @@ class Program < ApplicationRecord
   validates :title, :start_time, :stop_time, presence: true
   default_scope { order("start_time ASC") }
 
-  scope :daily_programs, -> { where('stop_time > ? ', Time.now).where('start_time > ? ', Time.now + 1.day) }
+  scope :daily_programs, -> { where('stop_time > ? ', Time.now).where('start_time < ? ', Time.now + 1.day) }
   scope :filter_by_channel, -> (telerama_id) { joins(:channel).where('channels.telerama_id' => telerama_id) }
 
   def self.search(params = {})
