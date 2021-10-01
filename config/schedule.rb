@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.day do
+every 1.day, at: '10:00'do
   runner "CleanProgramsJob.perform_later"
   runner "ScrapingProgramsJob.perform_later"
 end
