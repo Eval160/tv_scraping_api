@@ -5,7 +5,7 @@ class ScrapingProgramsJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    url = "https://roomintouch.fr/wp-content/uploads/2021/09/xmltv.xml"
+    url = 'http://185.170.214.229/xmltv.xml'
     # url = 'https://xmltv.ch/xmltv/xmltv-complet_1jour.xml'
     xml = Nokogiri::XML(URI.open(url))
 
