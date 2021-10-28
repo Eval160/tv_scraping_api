@@ -1,7 +1,7 @@
 class AlertMailer < ApplicationMailer
-  default from: 'alert@ritmobile.com'
+  default from: 'ecrepontvalentine@gmail.com'
 
   def program_scraping_error
-    mail(to: "ecrepontvalentine@hotmail.fr", subject: "Le scraping des programmes n'a pas fonctionné")
+    mail(to: "ecrepontvalentine@gmail.com", subject: "Le scraping des programmes n'a pas fonctionné")
   end
 end
