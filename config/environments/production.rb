@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'https://roomintouch.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://rit-tv-guide-api.herokuapp.com/' }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -12,7 +12,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
