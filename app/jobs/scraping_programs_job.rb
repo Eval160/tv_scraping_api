@@ -10,7 +10,6 @@ class ScrapingProgramsJob < ApplicationJob
     xml = Nokogiri::XML(URI.open(url))
 
     programs = Hash.from_xml(xml.to_s)['tv']['programme']
-    # program_count_before_scraping = Program.count
     programs.each do |program|
       channel = Channel.find_by(telerama_id: program['channel'])
       puts program_exist?(program)
@@ -27,10 +26,8 @@ class ScrapingProgramsJob < ApplicationJob
         channel: channel
       )
     end
-    # program_count_after_scraping = Program.count
-    # unless program_count_after_scraping > program_count_before_scraping
-    #   AlertMailer.program_scraping_error.deliver_now
-    # end
+
+    AlertMailer.program_scraping_error.deliver_now if Program.where("start_time > ?", Time.now.at_end_of_day).empty?
   end
 
   private
